@@ -1,0 +1,3 @@
+Testgenerator
+
+Documentation will follow some day, perhaps...

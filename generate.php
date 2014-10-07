@@ -1,0 +1,73 @@
+<?php
+$template = 'template.xml';
+
+// Autload faker classes
+require_once('vendor/fzaninotto/faker/src/autoload.php');
+
+// Initiate faker
+$faker = Faker\Factory::create();
+
+// Load template
+$xt=simplexml_load_file($template);
+
+// Start a new XML file
+$xml = new XMLWriter();
+$xml->openUri('input.xml');
+$xml->startDocument('1.0', 'UTF-8');
+$xml->setIndent(true);
+
+generateElement($xt);
+
+// Close the new file and write to disk
+
+$xml->endDocument();
+$xml->flush();
+
+/**
+ * @param $input
+ * @return string
+ */
+function getValue($input)
+{
+    global $faker;
+    if (substr($input, 0, 1) === '$') {
+        $fnc = str_replace('$', '', $input);
+        return $faker->$fnc;
+    } else {
+        return $input;
+    }
+}
+
+function generateElement($current)
+{
+    global $xml;
+
+    // Include the requested number of times
+	if($current->attributes()->inc)
+	{
+		$currentcount = $current->attributes()->inc;
+	} else {
+		$currentcount = 1;
+	}
+	
+	for ($x=1; $x<=$currentcount; $x++) {
+		$xml->startElement($current->getName());
+		foreach($current->attributes() as $attribute => $value)
+		{
+			if(!($attribute === 'inc')) {
+				$xml->startAttribute($attribute);
+				$xml->text(getValue($value));
+				$xml->endAttribute();
+			}
+		}
+	
+		if($current->count() > 0 ) {
+			foreach ($current->children() as $child) {
+				generateElement($child);
+			}
+		} else {
+			$xml->text(getValue($current));
+		}
+		$xml->endElement();
+	}
+}

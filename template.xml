@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inputAttachment xmlns="">
+    <dokument inc="3" type="$name" _blank="">
+        <dokumentInfo>
+            <testname>$name</testname>
+            <address>$address</address>
+            <email inc="9">$email</email>
+            <test>
+                <test2>Jaura</test2>
+            </test>
+        </dokumentInfo>
+        <userInfo>
+            <email>$email</email>
+            <name>$name</name>
+			<test3>
+                <test4>
+                    <hepp>Jeppelepp</hepp>
+                </test4>
+			</test3>
+        </userInfo>
+    </dokument>
+</inputAttachment>
