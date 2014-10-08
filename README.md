@@ -1,7 +1,7 @@
 Testgenerator
 =============
 
-This code will quickly convert a template XML to an HPX input file.
+This code will convert a template XML to an HPX input file.
 
 It uses Faker, to quickly generate dummy data.
 
