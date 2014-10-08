@@ -1,25 +1,17 @@
 <?php
-$template = 'template.xml';
-
-// Autload faker classes
+// Autload and initiate faker classes
 require_once('vendor/fzaninotto/faker/src/autoload.php');
-
-// Initiate faker
 $faker = Faker\Factory::create();
 
 // Load template
-$xt=simplexml_load_file($template);
+$xt=simplexml_load_file('template.xml');
 
 // Start a new XML file
 $xml = new XMLWriter();
 $xml->openUri('input.xml');
 $xml->startDocument('1.0', 'UTF-8');
 $xml->setIndent(true);
-
 generateElement($xt);
-
-// Close the new file and write to disk
-
 $xml->endDocument();
 $xml->flush();
 
