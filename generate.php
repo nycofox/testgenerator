@@ -35,12 +35,7 @@ function generateElement($current)
     global $xml;
 
     // Include the requested number of times
-	if($current->attributes()->inc)
-	{
-		$currentcount = $current->attributes()->inc;
-	} else {
-		$currentcount = 1;
-	}
+    $currentcount = $current->attributes()->inc ? $current->attributes()->inc : 1;
 	
 	for ($x=1; $x<=$currentcount; $x++) {
 		$xml->startElement($current->getName());
