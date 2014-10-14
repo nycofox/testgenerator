@@ -1,5 +1,5 @@
 {
-    "name": "nycofox/testdatagenerator",
+    "name": "nycofox/testgenerator",
     "description": "Creates XML testdata using Faker and an input template",
     "require": {
         "fzaninotto/faker": "~1.5@dev"
