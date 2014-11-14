@@ -21,9 +21,9 @@ function getValue($input)
     if (substr($input, 0, 1) === '$') {
         $fnc = str_replace('$', '', $input);
         return $faker->$fnc;
-    } else {
-        return $input;
     }
+	
+	return $input;
 }
 
 function generateElement($current)
